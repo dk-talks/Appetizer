@@ -14,7 +14,7 @@ class OrderViewModel: ObservableObject {
         if(Global.user.firstName != "") {
             var allOrder: [String] = []
             for item in order.items {
-                allOrder.append(item.name)
+                allOrder.append(item.menuItem)
             }
             
             FirebaseManager.shared.addOrderToFirebase(name: Global.user.firstName, totalBill: order.totalPrice, orderNames: allOrder)

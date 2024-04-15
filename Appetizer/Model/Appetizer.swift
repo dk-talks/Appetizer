@@ -10,13 +10,20 @@ import Foundation
 struct Appetizer: Decodable, Identifiable, Hashable {
     
     let id: Int
-    let name: String
-    let description: String
-    let imageURL: String
+    let menuItem: String
     let price: Double
-    let calories: Int
-    let carbs: Int
-    let protein: Int
+    let image: String
+    let perServeSize: String
+    let energy: Double
+    let protein: Double
+    let totalFat: Double
+    let satFat: Double
+    let transFat: Double
+    let cholesterols: Double
+    let totalCarbohydrate: Double
+    let totalSugars: Double
+    let addedSugars: Double
+    let sodium: Double
     
 }
 
@@ -26,13 +33,14 @@ struct AppetizerResponse: Decodable {
 
 struct MockData {
     
-    static let sample = Appetizer(id: 001, name: "Appetizer Test", description: "This is a test appetizer", imageURL: "google.com", price: 69.000, calories: 23, carbs: 23, protein: 23)
+    static let sample = Appetizer(id: 1, menuItem: "Chowmeen", price: 2, image: "https://seanallen-course-backend.herokuapp.com/images/appetizers/asian-flank-steak.jpg", perServeSize: "100 gm", energy: 1, protein: 1, totalFat: 1, satFat: 1, transFat: 1, cholesterols: 1, totalCarbohydrate: 1, totalSugars: 1, addedSugars: 1, sodium: 1)
     
-    static let order2 = Appetizer(id: 002, name: "Appetizer Test 2", description: "This is a test appetizer", imageURL: "google.com", price: 69.000, calories: 23, carbs: 23, protein: 23)
+    static let order1 = Appetizer(id: 1, menuItem: "Chowmeen", price: 2, image: "https://seanallen-course-backend.herokuapp.com/images/appetizers/asian-flank-steak.jpg", perServeSize: "100 gm", energy: 1, protein: 1, totalFat: 1, satFat: 1, transFat: 1, cholesterols: 1, totalCarbohydrate: 1, totalSugars: 1, addedSugars: 1, sodium: 1)
     
-    static let order3 = Appetizer(id: 003, name: "Appetizer Test 3", description: "This is a test appetizer", imageURL: "google.com", price: 69.000, calories: 23, carbs: 23, protein: 23)
+    static let order2 = Appetizer(id: 1, menuItem: "Chowmeen", price: 2, image: "https://seanallen-course-backend.herokuapp.com/images/appetizers/asian-flank-steak.jpg", perServeSize: "100 gm", energy: 1, protein: 1, totalFat: 1, satFat: 1, transFat: 1, cholesterols: 1, totalCarbohydrate: 1, totalSugars: 1, addedSugars: 1, sodium: 1)
     
-    static let order1 = Appetizer(id: 001, name: "Appetizer Test 1", description: "This is a test appetizer", imageURL: "google.com", price: 69.000, calories: 23, carbs: 23, protein: 23)
+    static let order3 = Appetizer(id: 1, menuItem: "Chowmeen", price: 2, image: "https://seanallen-course-backend.herokuapp.com/images/appetizers/asian-flank-steak.jpg", perServeSize: "100 gm", energy: 1, protein: 1, totalFat: 1, satFat: 1, transFat: 1, cholesterols: 1, totalCarbohydrate: 1, totalSugars: 1, addedSugars: 1, sodium: 1)
+    
     
     static var ordersArr = [order1, order2, order3]
     

@@ -15,9 +15,16 @@ final class NetworkManager {
     private init() {}
     
     
-    func getAppetizer(completed: @escaping (Result<[Appetizer], APError>) -> Void) {
+    func getAppetizer(page: Int, completed: @escaping (Result<[Appetizer], APError>) -> Void) {
         
-        guard let url = URL(string: "https://seanallen-course-backend.herokuapp.com/swiftui-fundamentals/appetizers") else {
+        if(page > 10) {
+            return
+        }
+        
+        var urlString: String = "https://script.google.com/macros/s/AKfycbwqZr0C-x5thQQ0hKlRejNpoFUJa8lv3aSAGSFBjj8fcDjnPithV2OAI-bDQDCNor0yWg/exec"
+        urlString.append("?page=\(page)&pageSize=10")
+        
+        guard let url = URL(string: urlString) else {
             completed(.failure(.invalidURL))
             return
         }
@@ -34,14 +41,15 @@ final class NetworkManager {
             }
             
             guard let data = data else {
+                
                 completed(.failure(.invalidData))
                 return
             }
             
             let decoder = JSONDecoder()
             do {
-                let decodedData = try decoder.decode(AppetizerResponse.self, from: data)
-                completed(.success(decodedData.request))
+                let decodedData = try decoder.decode([Appetizer].self, from: data)
+                completed(.success(decodedData))
                 return
                 
             } catch {

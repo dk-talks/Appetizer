@@ -15,19 +15,15 @@ struct AppetizerDetailView: View {
     
     var body: some View {
             VStack() {
-                AppetizerRemoteImage(urlString: appetizer.imageURL)
+                AppetizerRemoteImage(urlString: appetizer.image)
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 300, height: 225)
-                HeadingText(textName: appetizer.name)
-                Text(appetizer.description)
-                    .multilineTextAlignment(.center)
-                    .font(.body)
-                    .padding(.all)
+                HeadingText(textName: appetizer.menuItem)
                     
                 HStack(spacing: 40) {
-                    NutiritionInfoView(name: "Calories", amount: appetizer.calories)
+                    NutiritionInfoView(name: "Calories", amount: appetizer.energy)
                     NutiritionInfoView(name: "Proteins", amount: appetizer.protein)
-                    NutiritionInfoView(name: "Carbs", amount: appetizer.carbs)
+                    NutiritionInfoView(name: "Carbs", amount: appetizer.totalCarbohydrate)
                 }
                 
                 Spacer()
@@ -77,7 +73,7 @@ struct AppetizerDetailView_Previews: PreviewProvider {
 
 struct NutiritionInfoView: View {
     var name: String
-    var amount: Int
+    var amount: Double
     var body: some View {
         VStack {
             Text(name)

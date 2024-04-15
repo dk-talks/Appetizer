@@ -11,12 +11,12 @@ struct AppetizerListCell: View {
     var appetizer: Appetizer
     var body: some View {
         HStack {
-            AppetizerRemoteImage(urlString: appetizer.imageURL)
+            AppetizerRemoteImage(urlString: appetizer.image)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 100, height: 80)
                 .cornerRadius(8)
             VStack(alignment: .leading, spacing: 5) {
-                HeadingText(textName: appetizer.name)
+                HeadingText(textName: appetizer.menuItem)
                 Text("$ \(appetizer.price, specifier: "%.2f")")
                     .font(.body)
                     .foregroundColor(Color(.darkGray))
