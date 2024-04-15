@@ -19,11 +19,29 @@ struct AppetizerDetailView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 300, height: 225)
                 HeadingText(textName: appetizer.menuItem)
+                    .padding(.bottom, 10)
+                
+                VStack {
+                    HStack(spacing: 20) {
+                        ServingSizeInfoView(name: "Serve Size", amount: appetizer.perServeSize)
+                        NutiritionInfoView(name: "Energy (kCal)", amount: appetizer.energy)
+                        NutiritionInfoView(name: "Protein (g)", amount: appetizer.protein)
+                        
+                    }
+                    .padding(.bottom, 20)
                     
-                HStack(spacing: 40) {
-                    NutiritionInfoView(name: "Calories", amount: appetizer.energy)
-                    NutiritionInfoView(name: "Proteins", amount: appetizer.protein)
-                    NutiritionInfoView(name: "Carbs", amount: appetizer.totalCarbohydrate)
+                    HStack(spacing: 20) {
+                        NutiritionInfoView(name: "Total fat (g)", amount: appetizer.totalFat)
+                        NutiritionInfoView(name: "Sat Fat (g)", amount: appetizer.satFat)
+                        NutiritionInfoView(name: "Trans fat (g)", amount: appetizer.transFat)
+                    }
+                    .padding(.bottom, 20)
+                    
+                    HStack(spacing: 20) {
+                        NutiritionInfoView(name: "Chol (mg)", amount: appetizer.cholesterols)
+                        NutiritionInfoView(name: "Carbs (g)", amount: appetizer.totalCarbohydrate)
+                        NutiritionInfoView(name: "Sugars (g)", amount: appetizer.totalSugars)
+                    }
                 }
                 
                 Spacer()
@@ -42,7 +60,7 @@ struct AppetizerDetailView: View {
                     
                     
             }
-            .frame(width: 300, height: 525)
+            .frame(width: 330, height: 525)
             .background(Color(.systemBackground))
             .cornerRadius(12)
             .shadow(radius: 40)
@@ -79,7 +97,24 @@ struct NutiritionInfoView: View {
             Text(name)
                 .font(.subheadline)
                 .fontWeight(.medium)
-            Text("\(amount)")
+            Text("\(amount, specifier: "%.2f")")
+                .font(.system(size: 16))
+                .foregroundColor(.secondary)
+                .italic()
+        }
+    }
+}
+
+struct ServingSizeInfoView: View {
+    var name: String
+    var amount: String
+    
+    var body: some View {
+        VStack {
+            Text(name)
+                .font(.subheadline)
+                .fontWeight(.medium)
+            Text(amount)
                 .font(.system(size: 16))
                 .foregroundColor(.secondary)
                 .italic()

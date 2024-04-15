@@ -27,6 +27,7 @@ struct AppetizerListView: View {
                             }
                         
                     }
+                    
                     Button {
                         viewModel.getAppetizers()
                     } label: {
@@ -37,6 +38,7 @@ struct AppetizerListView: View {
                             .cornerRadius(10)
                             .padding(.bottom, 30)
                     }
+                    .disabled(viewModel.isDataFinished)
                     
                 }
                 

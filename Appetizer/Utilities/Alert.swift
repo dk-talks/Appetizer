@@ -48,4 +48,8 @@ struct AlertContext {
                                            message: Text("Please try after some time. This is on us!"),
                                            alertButton: .default(Text("OK")))
     
+    static let allDataFetched = AlertItem(title: Text("End of List!"),
+                                           message: Text("No more Appetizers are available!"),
+                                           alertButton: .default(Text("OK")))
+    
 }

@@ -13,8 +13,14 @@ class AppetizerListViewModel: ObservableObject {
     @Published var alertItem: AlertItem?
     @Published var isLoading = false
     @Published var page = 1
+    @Published var isDataFinished = false
     
     func getAppetizers() {
+        if page > 10 {
+            self.alertItem = AlertContext.allDataFetched
+            self.isDataFinished = true
+            return
+        }
         isLoading = true
         NetworkManager.shared.getAppetizer(page: page) { [self] result in
             DispatchQueue.main.async {
