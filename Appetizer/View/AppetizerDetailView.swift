@@ -32,7 +32,7 @@ struct AppetizerDetailView: View {
                     
                     HStack(spacing: 20) {
                         NutiritionInfoView(name: "Total fat (g)", amount: appetizer.totalFat)
-                        NutiritionInfoView(name: "Sat Fat (g)", amount: appetizer.satFat)
+                        NutiritionInfoView(name: "Sat Fat (g)", amount: appetizer.saturatedFat)
                         NutiritionInfoView(name: "Trans fat (g)", amount: appetizer.transFat)
                     }
                     .padding(.bottom, 20)

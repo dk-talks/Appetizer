@@ -14,8 +14,49 @@ final class NetworkManager {
     
     private init() {}
     
+    func getAppetizer<T: Decodable>(for: T.Type, offset: Int, limit: Int, completed: @escaping (Result<[T], APError>) -> Void) {
+        
+        var urlString: String = "https://appetizer-backend.onrender.com/api/menu"
+        urlString.append("?offset=\(offset)&limit=\(limit)")
+        
+        // URLSession - call the API with
+        
+        guard let url = URL(string: urlString) else {
+            completed(.failure(.invalidURL))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let _ = error {
+                completed(.failure(.unknownError))
+            }
+            guard let  response = response  as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.invalidResponse))
+                return
+            }
+            guard let data = data else {
+                completed(.failure(.invalidData))
+                return
+            }
+            
+            // this means data is correct, go ahead
+            let decoder = JSONDecoder();
+            do {
+                let decodedData = try decoder.decode([T].self, from: data)
+                completed(.success(decodedData))
+            } catch {
+                completed(.failure(.invalidData))
+            }
+        }
+        task.resume()
+        
+        
+    }
     
-    func getAppetizer(page: Int, completed: @escaping (Result<[Appetizer], APError>) -> Void) {
+    
+    // Google sheet (previous code)
+    
+    func getMenuItemFromSheet<T: Decodable>(for: T.Type, page: Int, completed: @escaping (Result<[T], APError>) -> Void) {
         
         if(page > 10) {
             return
@@ -48,7 +89,7 @@ final class NetworkManager {
             
             let decoder = JSONDecoder()
             do {
-                let decodedData = try decoder.decode([Appetizer].self, from: data)
+                let decodedData = try decoder.decode([T].self, from: data)
                 completed(.success(decodedData))
                 return
                 

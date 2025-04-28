@@ -20,6 +20,7 @@ class OrderViewModel: ObservableObject {
             FirebaseManager.shared.addOrderToFirebase(name: Global.user.firstName, totalBill: order.totalPrice, orderNames: allOrder)
         } else {
             print("user is not logged in yet")
+            debugPrint("user is not logged in yet")
         }
     }
 }

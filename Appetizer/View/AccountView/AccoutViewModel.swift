@@ -39,6 +39,7 @@ class AccountViewModel: ObservableObject {
             Global.user = user
         } catch {
             print("cannot decode data form app strage")
+            debugPrint("cannot decode data form app strage")
         }
     }
     

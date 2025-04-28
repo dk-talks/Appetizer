@@ -22,7 +22,6 @@ struct EmptyStateOrders: View {
                     .multilineTextAlignment(.center)
                     .font(.title3)
                     .foregroundColor(.secondary)
-                    .fontWeight(.bold)
             }
             .offset(CGSize(width: 0, height: -50))
         }

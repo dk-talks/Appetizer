@@ -12,20 +12,26 @@ class AppetizerListViewModel: ObservableObject {
     @Published var appetizers = [Appetizer]()
     @Published var alertItem: AlertItem?
     @Published var isLoading = false
-    @Published var page = 1
+    @Published var offset = 0
+    @Published var limit = 10
+    @Published var page = 0;
     @Published var isDataFinished = false
     
     func getAppetizers() {
+        /*
         if page > 10 {
             self.alertItem = AlertContext.allDataFetched
             self.isDataFinished = true
             return
         }
+         */
+        
         isLoading = true
-        NetworkManager.shared.getAppetizer(page: page) { [self] result in
+        NetworkManager.shared.getAppetizer(for: Appetizer.self, offset: offset, limit: limit) { [self] result in
             DispatchQueue.main.async {
                 self.isLoading = false
                 self.page += 1
+                self.offset += 1
                 switch(result) {
                 case .success(let appetizers):
                     
