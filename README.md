@@ -8,10 +8,7 @@ https://github.com/dk-talks/Appetizer
 
 # Introduction
 
-Appetizer is a learning project where I implemented my own API using Google Sheets via Google Apps Script. 
-Scraped data from Kaggle for food items and converted it to an API using Google Apps Script.
-The app allows users to place orders, which are then stored in a real-time Firebase database. 
-I used SwiftUI for the frontend, focusing on learning API creation, pagination, Firebase SDK integration, Swift UI development, and UI/UX design principles.
+Appetizer is a learning project where I built a complete food ordering system. Initially, I created an API using Google Sheets and Google Apps Script, scraping food item data from Kaggle. The project has since evolved to use a custom backend built with Java Spring Boot and a PostgreSQL database for improved scalability and performance. Users can browse food items, place orders, and all order data is stored in real-time using Firebase. On the frontend, I used SwiftUI, focusing on integrating APIs, implementing pagination, connecting with Firebase SDK, and applying solid UI/UX design principles throughout the app.
 
 
 
